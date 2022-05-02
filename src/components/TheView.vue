@@ -2,7 +2,6 @@
 	<main>
 		<div class="container py-4">
 			<PostCreate @create-post="createPost"></PostCreate>
-
 			<div class="row g-3">
 				<div v-for="post in posts" :key="post.id" class="col col-4">
 					<AppCard
@@ -51,8 +50,9 @@ export default {
 				type: 'notice',
 			},
 		]);
-		const createPost = (a, b, c, d) => {
-			console.log('createPost', a, b, c, d);
+		const createPost = newTitle => {
+			console.log('createPost');
+			console.log('newTitle: ', newTitle);
 		};
 		return { obj, posts, createPost };
 	},

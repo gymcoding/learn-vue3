@@ -1,18 +1,33 @@
 <template>
 	<div>
 		<!-- @click="$emit('createPost', 1, 2, 3, '김길동')" -->
+		<input v-model="title" type="text" class="form-control" />
+
 		<button class="btn btn-primary" @click="createPost">button</button>
 	</div>
 </template>
 
 <script>
+import { ref } from 'vue';
+
 export default {
+	// emits: ['createPost'],
+	emits: {
+		createPost: newTitle => {
+			console.log('validator: ', newTitle);
+			if (!newTitle) {
+				return false;
+			}
+			return true;
+		},
+	},
 	setup(props, { emit }) {
 		// context.emit
+		const title = ref('');
 		const createPost = () => {
-			emit('createPost', 111, 2, 3, '김길동');
+			emit('createPost', title.value);
 		};
-		return { createPost };
+		return { createPost, title };
 	},
 };
 </script>
