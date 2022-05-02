@@ -41,7 +41,8 @@ export default {
 			default: () => ({}),
 		},
 	},
-	setup(props, { emit }) {
+	emits: ['toggleLike'],
+	setup(props, context) {
 		console.log('props.title: ', props.title);
 		const isLikeClass = computed(() =>
 			props.isLike ? 'btn-danger' : 'btn-outline-danger',
@@ -51,9 +52,7 @@ export default {
 		);
 		const toggleLike = () => {
 			// props.isLike = !props.isLike;
-			// props.obj.title = '김길동';
-			// emit('changeTitle')
-			emit('toggleLike', props.isLike);
+			context.emit('toggleLike');
 		};
 		return { isLikeClass, typeName, toggleLike };
 	},

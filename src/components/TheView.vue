@@ -8,8 +8,7 @@
 						:contents="post.contents"
 						:type="post.type"
 						:is-like="post.isLike"
-						@toggle-like="value => (post.isLike = !value)"
-						:obj="obj"
+						@toggle-like="post.isLike = !post.isLike"
 					></AppCard>
 				</div>
 			</div>
