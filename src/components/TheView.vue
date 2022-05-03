@@ -18,19 +18,14 @@
 			</div>
 
 			<hr class="my-4" />
-			<!--
-				modelValue
-				update:modelValue
 
-			-->
-			<!-- :model-value="username"
-				@update:model-value="value => (username = value)" -->
-			<LabelInput v-model="username" label="이름"></LabelInput>
-			<LabelTitle v-model:title="username" label="제목"></LabelTitle>
-			<Username
-				v-model:firstname="firstname"
-				v-model:lastname="lastname"
-			></Username>
+			<LabelInput
+				v-model="username"
+				label="이름"
+				class="parent-classa"
+				style="color: red"
+				id="parent-id"
+			></LabelInput>
 		</div>
 	</main>
 </template>

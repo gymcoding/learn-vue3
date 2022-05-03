@@ -1,5 +1,5 @@
 <template>
-	<label>
+	<label class="child-classa" style="border: 1px solid black" id="child-id">
 		{{ label }}
 		<!-- v-model="username" -->
 		<input v-model="value" type="text" />
