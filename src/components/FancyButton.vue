@@ -1,13 +1,16 @@
 <template>
 	<button class="fancy-btn">
-		<slot><span>!!</span>Default Click!!</slot>
+		<slot :fancy-message="fancyMessage"><span>!!</span>Default Click!!</slot>
 	</button>
 </template>
 
 <script>
+import { ref } from 'vue';
+
 export default {
 	setup() {
-		return {};
+		const fancyMessage = ref('Fancy Message');
+		return { fancyMessage };
 	},
 };
 </script>
