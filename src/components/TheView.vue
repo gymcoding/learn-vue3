@@ -28,6 +28,8 @@
 					{{ helloMessage }}
 				</template>
 			</AppCard>
+			<hr />
+			<AppCard> 게시글입니다. </AppCard>
 		</div>
 	</main>
 </template>
