@@ -1,27 +1,44 @@
 <template>
 	<div class="container py-4">
 		<input ref="inputRef" type="text" value="hello world!" />
-		<LifecycleChild></LifecycleChild>
+		<!-- <LifecycleChild></LifecycleChild> -->
+		<p id="message">{{ message }}</p>
 	</div>
 </template>
 
 <script>
-import { onBeforeMount, onMounted, ref } from 'vue';
-import LifecycleChild from './LifecycleChild.vue';
+import { onBeforeMount, onBeforeUpdate, onMounted, onUpdated, ref } from 'vue';
+// import LifecycleChild from './LifecycleChild.vue';
 export default {
 	components: {
-		LifecycleChild,
+		// LifecycleChild,
 	},
 	setup() {
-		console.log('setup');
+		// console.log('setup');
 		const inputRef = ref(null);
-		onBeforeMount(() => {
-			console.log('onBeforeMount', inputRef.value);
+		const message = ref('');
+		// onBeforeMount(() => {
+		// 	console.log('onBeforeMount', inputRef.value);
+		// });
+		// onMounted(() => {
+		// 	console.log('onMounted', inputRef.value.value);
+		// });
+
+		onBeforeUpdate(() => {
+			console.log('onBeforeUpdate', message.value);
+			console.log(
+				'DOM Content: ',
+				document.querySelector('#message').textContent,
+			);
 		});
-		onMounted(() => {
-			console.log('onMounted', inputRef.value.value);
+		onUpdated(() => {
+			console.log('onUpdated', message.value);
+			console.log(
+				'DOM Content: ',
+				document.querySelector('#message').textContent,
+			);
 		});
-		return { inputRef };
+		return { inputRef, message };
 	},
 	// data: () => ({
 	// 	dataMessage: 'data message',
