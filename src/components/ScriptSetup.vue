@@ -33,6 +33,7 @@
 
 <script setup>
 import { ref } from 'vue';
+import axios from 'axios';
 import PostItem from '@/components/setup/PostItem.vue';
 import TemplateRefsChild from './setup/TemplateRefsChild.vue';
 import MyButton from './setup/MyButton.vue';
@@ -46,6 +47,14 @@ const child = ref(null);
 defineExpose({
 	msg,
 });
+const response = await axios(
+	'https://dummy.restapiexample.com/api/v1/employees',
+);
+console.log('response: ', response);
+// async function callApi() {
+// 	const response = await axios('https://dummy.restapiexample.com/api/v1/employees')
+// }
+// callApi();
 </script>
 
 <style lang="scss" scoped></style>
