@@ -12,8 +12,13 @@
 	</div>
 </template>
 
+<script>
+console.log('Normal Script');
+</script>
+
 <script setup>
 import { computed } from '@vue/reactivity';
+console.log('Script Setup');
 
 const props = defineProps({
 	type: {

@@ -11,9 +11,23 @@
 			contents="내용"
 			:is-like="true"
 		></PostItem>
+		<PostItem
+			type="news"
+			title="제목"
+			contents="내용"
+			:is-like="true"
+		></PostItem>
+		<PostItem
+			type="news"
+			title="제목"
+			contents="내용"
+			:is-like="true"
+		></PostItem>
 		<hr />
 		<TemplateRefsChild ref="child"></TemplateRefsChild>
 		<template v-if="child">{{ child.message }}</template>
+		<hr />
+		<MyButton class="parent-class"></MyButton>
 	</div>
 </template>
 
@@ -21,6 +35,7 @@
 import { ref } from 'vue';
 import PostItem from '@/components/setup/PostItem.vue';
 import TemplateRefsChild from './setup/TemplateRefsChild.vue';
+import MyButton from './setup/MyButton.vue';
 
 const msg = 'Hello World!';
 const message = ref('');
