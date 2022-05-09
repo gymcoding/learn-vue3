@@ -6,8 +6,8 @@
 			{{ input.value }}, {{ $refs.input.value }}, {{ $refs.input === input }}
 		</p>
 		<hr />
-		<ul>
-			<!-- <li v-for="fruit in fruits" :key="fruit" ref="itemRefs">{{ fruit }}</li> -->
+		<!-- <li v-for="fruit in fruits" :key="fruit" ref="itemRefs">{{ fruit }}</li> -->
+		<!-- <ul>
 			<li
 				v-for="fruit in fruits"
 				:key="fruit"
@@ -15,13 +15,19 @@
 			>
 				{{ fruit }}
 			</li>
-		</ul>
+		</ul> -->
+		<hr />
+		<TemplateRefsChild ref="child"></TemplateRefsChild>
 	</div>
 </template>
 
 <script>
+import TemplateRefsChild from './TemplateRefsChild.vue';
 import { onMounted, ref } from 'vue';
 export default {
+	components: {
+		TemplateRefsChild,
+	},
 	setup() {
 		const input = ref(null);
 		console.log('setup: ', input.value);
@@ -31,11 +37,15 @@ export default {
 
 			// itemRefs.value.forEach(item => console.log('item: ', item.textContent));
 			itemRefs.value.forEach(item => console.log('item: ', item));
+			console.log('child.message: ', child.value.message);
+			child.value.sayHello();
 		});
 
 		const fruits = ref(['사과', '딸기', '포도']);
 		const itemRefs = ref([]);
-		return { input, fruits, itemRefs };
+
+		const child = ref(null);
+		return { input, fruits, itemRefs, child };
 	},
 };
 </script>
