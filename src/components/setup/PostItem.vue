@@ -12,50 +12,43 @@
 	</div>
 </template>
 
-<script>
+<script setup>
 import { computed } from '@vue/reactivity';
 
-export default {
-	props: {
-		type: {
-			type: String,
-			default: 'news',
-			validator: value => {
-				return ['news', 'notice'].includes(value);
-			},
-		},
-		title: {
-			type: String,
-			required: true,
-		},
-		contents: {
-			type: String,
-			// required: true,
-		},
-		isLike: {
-			type: Boolean,
-			default: false,
-		},
-		obj: {
-			type: Object,
-			default: () => ({}),
+const props = defineProps({
+	type: {
+		type: String,
+		default: 'news',
+		validator: value => {
+			return ['news', 'notice'].includes(value);
 		},
 	},
-	emits: ['toggleLike'],
-	setup(props, context) {
-		// console.log('props.title: ', props.title);
-		const isLikeClass = computed(() =>
-			props.isLike ? 'btn-danger' : 'btn-outline-danger',
-		);
-		const typeName = computed(() =>
-			props.type === 'news' ? '뉴스' : '공지사항',
-		);
-		const toggleLike = () => {
-			// props.isLike = !props.isLike;
-			context.emit('toggleLike');
-		};
-		return { isLikeClass, typeName, toggleLike };
+	title: {
+		type: String,
+		required: true,
 	},
+	contents: {
+		type: String,
+		// required: true,
+	},
+	isLike: {
+		type: Boolean,
+		default: false,
+	},
+	obj: {
+		type: Object,
+		default: () => ({}),
+	},
+});
+const emit = defineEmits(['toggleLike']);
+// console.log('props.title: ', props.title);
+const isLikeClass = computed(() =>
+	props.isLike ? 'btn-danger' : 'btn-outline-danger',
+);
+const typeName = computed(() => (props.type === 'news' ? '뉴스' : '공지사항'));
+const toggleLike = () => {
+	// props.isLike = !props.isLike;
+	emit('toggleLike');
 };
 </script>
 
