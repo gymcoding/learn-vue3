@@ -1,13 +1,13 @@
 <template>
 	<main>
-		<LifecycleHooks></LifecycleHooks>
+		<ScriptSetup></ScriptSetup>
 	</main>
 </template>
 
 <script>
-import LifecycleHooks from '@/components/LifecycleHooks.vue';
+import ScriptSetup from './ScriptSetup.vue';
 export default {
-	components: { LifecycleHooks },
+	components: { ScriptSetup },
 	setup() {
 		return {};
 	},
