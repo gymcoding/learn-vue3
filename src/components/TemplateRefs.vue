@@ -5,6 +5,17 @@
 		<p v-if="input">
 			{{ input.value }}, {{ $refs.input.value }}, {{ $refs.input === input }}
 		</p>
+		<hr />
+		<ul>
+			<!-- <li v-for="fruit in fruits" :key="fruit" ref="itemRefs">{{ fruit }}</li> -->
+			<li
+				v-for="fruit in fruits"
+				:key="fruit"
+				:ref="el => itemRefs.push(el.textContent)"
+			>
+				{{ fruit }}
+			</li>
+		</ul>
 	</div>
 </template>
 
@@ -17,8 +28,14 @@ export default {
 		onMounted(() => {
 			input.value.value = 'Hello World!';
 			console.log('onMounted: ', input.value);
+
+			// itemRefs.value.forEach(item => console.log('item: ', item.textContent));
+			itemRefs.value.forEach(item => console.log('item: ', item));
 		});
-		return { input };
+
+		const fruits = ref(['사과', '딸기', '포도']);
+		const itemRefs = ref([]);
+		return { input, fruits, itemRefs };
 	},
 };
 </script>
